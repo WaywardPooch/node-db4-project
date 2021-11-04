@@ -31,6 +31,16 @@ const up = async (knex) => {
     })
     .createTable("step_ingredient", table => {
       table.increments("step_ingredient_id");
+      table.integer("ingredient_quantity")
+        .unsigned()
+        .notNullable();
+      table.integer("step_id")
+        .unsigned()
+        .notNullable()
+        .references("step_id")
+        .inTable("step")
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE');
       table.integer("ingredient_id")
         .unsigned()
         .notNullable()
@@ -38,9 +48,6 @@ const up = async (knex) => {
         .inTable("ingredient")
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
-      table.integer("ingredient_quantity")
-        .unsigned()
-        .notNullable();
     });
 };
 
