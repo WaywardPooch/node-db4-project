@@ -1,4 +1,4 @@
-import db from "../../data/db-config";
+import db from "./../../data/db-config.js";
 
 const getRecipeById = async (recipe_id) => {
   const recipe = await db("recipe as r")
@@ -19,7 +19,7 @@ const getRecipeById = async (recipe_id) => {
       "i.unit_of_measurement")
     .where("r.recipe_id", recipe_id)
     .orderBy("s.step_number", "asc");
-  if (recipe.recipe_id) {
+  if (recipe[0].recipe_id) {
     return {
       recipe_id: recipe[0].recipe_id,
       recipe_name: recipe[0].recipe_name,
@@ -36,6 +36,6 @@ const getRecipeById = async (recipe_id) => {
   }
 };
 
-export {
+export default {
   getRecipeById
 };

@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import server from "./api/server";
+import server from "./api/server.js";
 
 dotenv.config(); // Use environment variables from .env
 
