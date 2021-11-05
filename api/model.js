@@ -1,5 +1,15 @@
 import db from "./../../data/db-config.js";
 
+const checkRecipeId = async (recipe_id) => {
+  const recipe = await db("recipe as r")
+    .where("r.recipe_id", recipe_id);
+  if (recipe) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const getStepIngredientsById = async (step_id) => {
   const stepIngredients = await db("step as s")
     .leftJoin("step_ingredient as si",
@@ -56,6 +66,6 @@ const getRecipeById = async (recipe_id) => {
 };
 
 export default {
+  checkRecipeId,
   getRecipeById,
-  getStepIngredientsById
 };

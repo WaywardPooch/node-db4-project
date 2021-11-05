@@ -1,15 +1,13 @@
 // Imports
 import express from "express";
-import RecipeRouter from "./recipe/recipe-router.js";
-import StepRouter from "./step/step-router.js";
+import Router from "./router.js";
 
 // Server Instantiation
 const server = express();
 
 // Middleware
 server.use(express.json());
-server.use("/api/recipe", RecipeRouter);
-server.use("/api/step", StepRouter);
+server.use("/api/recipe", Router);
 
 // Exports
 export default server;
