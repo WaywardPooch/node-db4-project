@@ -33,10 +33,9 @@ const getRecipeById = async (recipe_id) => {
 
 
   if (recipe[0].recipe_id) {
-    return {
-      recipe_id: recipe[0].recipe_id,
-      recipe_name: recipe[0].recipe_name,
-      steps: recipe.map(step_ingredient => {
+    const stepsWithDuplicates = recipe
+      .map(step_ingredient => {
+        // For a single step, return an array of ingredient objects
         const ingredients = recipe
           .filter(step => {
             return step_ingredient.step_number === step.step_number;
@@ -51,6 +50,8 @@ const getRecipeById = async (recipe_id) => {
               }
               : null;
           });
+
+        // Return list of steps containing ingredients, with duplicates allowed
         return {
           step_id: step_ingredient.step_id,
           step_number: step_ingredient.step_number,
@@ -59,9 +60,22 @@ const getRecipeById = async (recipe_id) => {
             ? ingredients
             : []
         };
-      })
+      });
+
+    // Filter out duplicate steps
+    const steps = stepsWithDuplicates
+      .filter((step, index) => {
+        return step.step_number === index;
+      });
+
+    // Return a formatted recipe if one exists
+    return {
+      recipe_id: recipe[0].recipe_id,
+      recipe_name: recipe[0].recipe_name,
+      steps: steps
     };
   } else {
+    // Return an error if recipe does not exist
     return recipe;
   }
 };
