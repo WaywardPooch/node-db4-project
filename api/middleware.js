@@ -1,4 +1,4 @@
-import Recipe from "./model";
+const Recipe = require("./model");
 
 const validateRecipeId = async (req, res, next) => {
   const { id } = req.params;
@@ -20,7 +20,7 @@ const handleError = (err, req, res, next) => {
   });
 };
 
-export default {
+module.exports = {
   validateRecipeId,
   handleError
 };

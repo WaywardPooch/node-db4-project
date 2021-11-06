@@ -59,7 +59,4 @@ const down = async (knex) => {
     .dropTableIfExists("recipe");
 };
 
-export {
-  up,
-  down
-};
+module.exports = { up, down };

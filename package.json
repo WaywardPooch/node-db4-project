@@ -2,7 +2,7 @@
   "name": "node-db4-project",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",

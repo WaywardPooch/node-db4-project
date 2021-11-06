@@ -1,6 +1,6 @@
 // Imports
-import express from "express";
-import Router from "./router.js";
+const express = require("express");
+const Router = require("./router");
 
 // Server Instantiation
 const server = express();
@@ -10,4 +10,4 @@ server.use(express.json());
 server.use("/api/recipe", Router);
 
 // Exports
-export default server;
+module.exports = server;

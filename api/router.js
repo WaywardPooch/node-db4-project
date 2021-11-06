@@ -1,9 +1,9 @@
-import express from "express";
-import Recipe from "./recipe-model.js";
-import {
+const express = require("express");
+const Recipe = require("./model");
+const {
   validateRecipeId,
   handleError
-} from "./middleware";
+} = require("./middleware");
 
 const RecipeRouter = express.Router();
 
@@ -23,4 +23,4 @@ RecipeRouter.get(
 
 RecipeRouter.use(handleError);
 
-export default RecipeRouter;
+module.exports = RecipeRouter;

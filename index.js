@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
-import server from "./api/server.js";
+const dotenv = require("dotenv");
+const server = require("./api/server");
 
 dotenv.config(); // Use environment variables from .env
 
